@@ -7,12 +7,10 @@ class Network :
     self.layers = []
     self.layers.append(Layer(784, 256))
     self.layers[0].set_activation("RELU")
-    self.layers.append(Layer(256, 128))
+    self.layers.append(Layer(256, 64))
     self.layers[1].set_activation("RELU")
-    self.layers.append(Layer(128, 64))
-    self.layers[2].set_activation("RELU")
     self.layers.append(Layer(64, 10))
-    self.layers[3].set_activation("SOFTMAX")
+    self.layers[2].set_activation("SOFTMAX")
 
   def add_layer(self, layer) :
     self.layers.append(layer)
@@ -147,9 +145,9 @@ def read_mnist(dataset="training", path=""):
 
 if __name__ == "__main__":
     network = Network()
-    epochs = 15
+    epochs = 10
     batch_size = 30
-    learning_rate = 0.01
+    learning_rate = 0.5
 
     network.train(epochs, batch_size, learning_rate)
 
